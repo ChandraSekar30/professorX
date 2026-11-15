@@ -1,0 +1,13 @@
+{
+  "name": "professorx-marketplace",
+  "owner": {
+    "name": "ChandraSekar30"
+  },
+  "plugins": [
+    {
+      "name": "professor-x",
+      "source": "./",
+      "description": "BITS study assistant skill"
+    }
+  ]
+}

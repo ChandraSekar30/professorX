@@ -1,0 +1,19 @@
+{
+  "name": "professorx-marketplace",
+  "interface": {
+    "displayName": "ProfessorX Academic Tools"
+  },
+  "plugins": [
+    {
+      "name": "professorx",
+      "source": {
+        "source": "local",
+        "path": "./plugins/professorX"
+      },
+      "policy": {
+        "installation": "AVAILABLE"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

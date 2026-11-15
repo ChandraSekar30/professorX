@@ -1,0 +1,26 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "professor-x",
+  "version": "0.6.2-beta.1",
+  "description": "Public ProfessorX skill with limited teaching-plan MCP; student reference Drive separate",
+  "author": {
+    "name": "Chandra Sekar"
+  },
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Professor-X",
+        "shortDescription": "BITS Semester 1 study tutor",
+        "longDescription": "Professor-X is an academic assistant for learning, exam preparation, problem solving, previous-paper analysis, revision, and adaptive quizzes across BITS Semester 1 subjects.",
+        "developerName": "Chandra Sekar",
+        "category": "Education",
+        "capabilities": [
+          "Interactive"
+        ],
+        "defaultPrompt": "Help me study my BITS Semester 1 material.",
+        "logo": "./assets/professor-x-icon-v024.jpg",
+        "composerIcon": "./assets/professor-x-icon-v024.jpg"
+      }
+    }
+  }
+}

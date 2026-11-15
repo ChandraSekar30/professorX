@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "professorx_teaching": {
+      "command": "professorx-mcp",
+      "env": {
+        "PROFESSORX_APPS_SCRIPT_URL": "https://script.google.com/macros/s/REPLACE_DEPLOYMENT_ID/exec"
+      }
+    }
+  }
+}

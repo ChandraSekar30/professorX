@@ -1,0 +1,26 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "professorx",
+  "version": "0.6.2-beta.1",
+  "description": "Public ProfessorX student-facing study skill; instructor reference files accessed separately",
+  "repository": "https://github.com/ChandraSekar30/professorX",
+  "keywords": [
+    "study",
+    "education",
+    "textbooks",
+    "lecture-transcripts",
+    "research"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "ProfessorX",
+        "shortDescription": "Study BITS material with citations",
+        "category": "Productivity",
+        "defaultPrompt": [
+          "Explain an ESD concept using my authorized course references, if available."
+        ]
+      }
+    }
+  }
+}
