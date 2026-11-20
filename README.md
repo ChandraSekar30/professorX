@@ -25,7 +25,7 @@ Try prompts such as:
 ProfessorX combines **three required pieces**:
 
 1. **The public ProfessorX skill** — tells your AI assistant how to conduct a study session.
-2. **The ProfessorX teaching-plan MCP tool** — required. It obtains limited subject-specific teaching guidance from a gateway maintained by the instructor. **Installing the skill alone is not enough.**
+2. **The ProfessorX teaching-plan MCP tool** — required. Connect it using **either** the hosted Remote MCP (recommended) **or** the local Python MCP bridge. **Installing the skill alone is not enough.**
 3. **Course reference materials** — your assistant must be able to read relevant documents through an authorized Google Drive connection or files you attach. A Drive link alone cannot give an AI access to its contents.
 
 For a course-grounded ProfessorX answer, the assistant checks that it can access a real source **first**, then calls `get_teaching_plan`, and finally explains the answer using the retrieved references and teaching guidance.
@@ -34,21 +34,22 @@ For a course-grounded ProfessorX answer, the assistant checks that it can access
 
 ## Before you install
 
-You need:
+You need an AI client that supports MCP tools, authorized ESD/PAD/SES/RTES reference material, and access to an AI model. Your AI also needs a copy of the ProfessorX skill instructions: install the public skill in a compatible skill-enabled client, or explicitly provide the public [SKILL.md](SKILL.md) to a client that does not install skills automatically.
 
-- A supported **desktop AI client**: Claude Code, Codex, Cursor or Gemini CLI, and access to the AI model used by that client.
-- **Node.js 22.20+** (for the `npx skills` installer) and **Python 3.11+** (for the local MCP client).
-- **Git**, to install the Python client directly from this public repository.
-- A **ProfessorX teaching gateway URL** supplied by your instructor. It looks like `https://script.google.com/macros/s/DEPLOYMENT_ID/exec`.
-- Permission to read the [ProfessorX course reference folder](https://drive.google.com/drive/folders/1WH1i14dFTLOAKA-NQZAl279OEFnUWw4o?usp=sharing), using your college Google account, or downloaded course documents to attach to your AI conversation.
+**Choose one MCP connection method:**
 
-You do **not** need to sign in separately to the ProfessorX teaching gateway. Google Drive access is controlled separately by Google.
+- **Option A — Remote MCP (recommended):** no Python, Node.js or local MCP installation required **for the MCP connection**. Supports Claude Web as confirmed by our integration test and other compatible HTTP MCP clients.
+- **Option B — Local MCP (alternative):** requires Python 3.11+, Git, and the instructor-provided Apps Script gateway `/exec` URL. This is for clients that launch stdio MCP servers.
 
-## Installation: both steps are required
+For the `npx skills` installer in a terminal, you also need a compatible Node.js installation. Installing a skill and connecting MCP are separate tasks.
 
-### Step 1 — Install the public ProfessorX skill
+You need permission to read the [ProfessorX shared course reference folder](https://drive.google.com/drive/folders/1WH1i14dFTLOAKA-NQZAl279OEFnUWw4o?usp=sharing), using your college Google account, or the relevant course documents to attach to your AI chat. The MCP server **does not grant Google Drive access**.
 
 ## Installation — skill instructions + one MCP connection + course references
+
+### Step 1 — Make the public ProfessorX skill available
+
+For clients with the `npx skills` installer, use one applicable command:
 
 ### Step 1 — Install the single GitHub source ZIP (Claude or ChatGPT)
 
@@ -129,11 +130,17 @@ local Python MCP, or owner-only credentials.
 
 | Problem | What to do |
 |---|---|
-| Skill installed, but no `get_teaching_plan` tool | Complete Step 2 and restart your AI client. The skill installer does not configure MCP. |
-| MCP tool cannot connect | Check the `/exec` gateway URL, Python installation and MCP server status. Ask the instructor whether the gateway is deployed. |
-| Drive folder opens in browser but AI cannot read it | Configure a supported Drive connection for your AI, or attach the relevant file directly. |
-| The AI cannot find an answer in the course materials | Ask it which documents it read. It must not invent citations, page numbers or source content. |
-| Using a web/mobile chatbot without local MCP support | Use a compatible desktop AI client; a normal chat window does not automatically run the local bridge. |
+| Skill installed, but no `get_teaching_plan` tool | Connect **either** remote or local MCP in Step 2 and enable the connector. |
+| Remote MCP unavailable | Verify the exact HTTPS URL ends with `/mcp`, and check client connection status; ask the instructor if the service is down. |
+| Local MCP unavailable | Check the `/exec` gateway URL, Python environment and stdio configuration. |
+| Claude Web connector works but ProfessorX style is absent | The MCP connector does not install `SKILL.md`; provide the public skill text using your available project/chat instruction feature. |
+| Drive folder opens in browser but AI cannot read it | Configure an authorized Drive connection in your AI client or attach the actual course file. |
+| Assistant cannot find supporting course material | It must say so; never invent citations, page numbers or source contents. |
+| Client cannot use HTTP MCP | Use Option B if the client supports local stdio MCP; otherwise use a supported client. |
+
+## Privacy and source handling
+
+The public repository contains the student-facing skill and local MCP client, **not** the instructor's original private teaching instructions, private Drive contents, credentials or Apps Script gateway source. The MCP tool receives only limited teaching-plan guidance; that returned guidance can be inspected by your AI client. The course materials remain governed by the Google Drive permissions your instructor has assigned. ProfessorX does not independently verify student identity for its teaching gateway. The remote MCP endpoint is publicly callable; course document access must be independently enforced by the student's Drive connection. The teaching gateway returns approved limited plan fields, not protected course documents.
 
 See the [student setup guide](docs/STUDENT_SETUP.md) for detailed installation instructions.
 

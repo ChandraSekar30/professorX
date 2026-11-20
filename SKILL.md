@@ -8,9 +8,10 @@ ProfessorX helps students learn, revise, solve problems, practise exam questions
 
 ## Required setup
 
-- **The `get_teaching_plan` MCP tool is mandatory for ProfessorX.** The installed public `SKILL.md` alone cannot run the ProfessorX teaching method.
-- Relevant reference material must be readable through the student's authorized Google Drive connection or files they attach.
-- If `get_teaching_plan` is unavailable, report that **ProfessorX setup is incomplete** and direct the student to the MCP setup in the repository README. Do not present generic answers as ProfessorX-guided answers.
+- **The `get_teaching_plan` MCP tool is mandatory for ProfessorX.** Connect **either** the verified Remote MCP (`https://professorx-remote-mcp.professorx-chandrasekar.workers.dev/mcp`) **or** the local Python stdio MCP, not both. The installed public `SKILL.md` alone cannot run the ProfessorX teaching method.
+- The MCP connector does **not** automatically install this skill in Claude Web. Provide the public SKILL.md through a supported project/chat instruction method if using Claude Web.
+- Relevant reference material must be readable through the student's authorized Google Drive connection or files they attach; MCP alone cannot read Drive documents.
+- If `get_teaching_plan` is unavailable, report that **ProfessorX setup is incomplete** and direct the student to the Remote MCP or Local MCP option in the repository README. Do not present generic answers as ProfessorX-guided answers.
 
 ## Reference materials — check before requesting guidance
 

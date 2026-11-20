@@ -20,3 +20,12 @@ def test_public_release_has_no_owner_code_or_policy():
     assert not (ROOT / "src/professorx/auth.py").exists()
     assert not (ROOT / "src/professorx/drive_sync.py").exists()
     assert not (ROOT / "docs/PRIVATE_POLICY_TEMPLATE.example.json").exists()
+
+
+def test_remote_mcp_documented_and_skill_synced():
+    url = "https://professorx-remote-mcp.professorx-chandrasekar.workers.dev/mcp"
+    assert url in (ROOT / "README.md").read_text()
+    assert url in (ROOT / "docs/STUDENT_SETUP.md").read_text()
+    assert url in (ROOT / "SKILL.md").read_text()
+    assert "Option A — Remote MCP" in (ROOT / "README.md").read_text()
+    assert "Option B — Local Python MCP" in (ROOT / "README.md").read_text()
