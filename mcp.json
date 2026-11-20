@@ -2,8 +2,8 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
   "mcpServers": {
     "professorx_teaching": {
-      "type": "stdio",
-      "command": "professorx-mcp"
+      "type": "streamable-http",
+      "url": "https://professorx-remote-mcp.professorx-chandrasekar.workers.dev/mcp"
     }
   }
 }

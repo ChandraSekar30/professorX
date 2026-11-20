@@ -12,8 +12,8 @@
     "logo": "./assets/professor-x-icon-v024.jpg",
     "composerIcon": "./assets/professor-x-icon-v024.jpg"
   },
-  "name": "professor-x",
-  "version": "0.6.2-beta.1",
+  "name": "professorx",
+  "version": "2.0.0",
   "description": "Public ProfessorX skill; reference Drive accessed by the student through separate Drive integration",
   "author": {
     "name": "Chandra Sekar"

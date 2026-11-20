@@ -1,8 +1,12 @@
-# ProfessorX 🎓
+# ProfessorX V2.0.0 🎓
 
 **Study smarter with your own AI assistant.** ProfessorX is an open-source AI Agent Skill for students learning **ESD, PAD, SES and RTES**. It helps your AI assistant explain course concepts, work through questions, revise for exams and practise with quizzes using your course references and ProfessorX teaching guidance.
 
-ProfessorX is **not a separate AI model or website**. It runs inside a compatible AI coding assistant such as **Claude Code, OpenAI Codex, Cursor or Gemini CLI**. You use the AI service you already have access to.
+ProfessorX is **not a separate AI model or website**. It runs inside compatible AI clients including **Claude and ChatGPT**, plus developer clients such as Claude Code and OpenAI Codex. You use an AI service you already have access to.
+
+> **ProfessorX V2.0.0 (source-ZIP plugin beta):** Download the repository once using GitHub **Code → Download ZIP**, then upload that ZIP to a client that supports plugin ZIP imports. The plugin manifests and shared skill are in the GitHub repository root; no copying `SKILL.md` or generating another ZIP. See [Student setup](docs/STUDENT_SETUP.md).
+
+**Public release:** V2.0.0 unifies the plugin layout for supported clients. The privately managed teaching gateway and Cloudflare service are separate from this public repository version.
 
 ## What can ProfessorX help me do?
 
@@ -34,7 +38,7 @@ For a course-grounded ProfessorX answer, the assistant checks that it can access
 
 ## Before you install
 
-You need an AI client that supports MCP tools, authorized ESD/PAD/SES/RTES reference material, and access to an AI model. Your AI also needs a copy of the ProfessorX skill instructions: install the public skill in a compatible skill-enabled client, or explicitly provide the public [SKILL.md](SKILL.md) to a client that does not install skills automatically.
+You need an AI client that supports installing plugin ZIPs and using MCP tools, authorized ESD/PAD/SES/RTES reference material, and access to an AI model. The GitHub source ZIP already contains the skill; no manual `SKILL.md` copy is necessary for a successful plugin installation.
 
 **Choose one MCP connection method:**
 
@@ -47,13 +51,9 @@ You need permission to read the [ProfessorX shared course reference folder](http
 
 ## Installation — skill instructions + one MCP connection + course references
 
-### Step 1 — Make the public ProfessorX skill available
-
-For clients with the `npx skills` installer, use one applicable command:
-
 ### Step 1 — Install the single GitHub source ZIP (Claude or ChatGPT)
 
-The repository **itself** is the plugin source. The root contains `plugin.json`, `.claude-plugin/plugin.json`, and `skills/professorx/SKILL.md`, plus remote MCP configuration. There is **no second plugin ZIP, no ZIP-generation script and no separate ChatGPT/Claude folders**.
+The repository **itself** is the plugin source. The root contains `plugin.json`, `.claude-plugin/plugin.json`, and `skills/professorx/SKILL.md`, with the Remote MCP connection documented below. There is **no second plugin ZIP, no ZIP-generation script and no separate ChatGPT/Claude folders**.
 
 1. Open [ProfessorX on GitHub](https://github.com/ChandraSekar30/professorX).
 2. Select **Code → Download ZIP**. Keep the downloaded `professorX-main.zip` (or similarly named branch ZIP) intact; do not re-zip a subfolder.
@@ -61,7 +61,7 @@ The repository **itself** is the plugin source. The root contains `plugin.json`,
 4. Enable ProfessorX. If the client doesn't automatically activate `get_teaching_plan`, connect the Remote MCP in Step 2. Authorize your own Google Drive account separately, or attach authorized documents.
 5. Type **ProfessorX setup**. ProfessorX should verify both the source connection and MCP tool before declaring setup complete.
 
-**Compatibility notice:** GitHub puts all source files under an outer `professorX-main/` folder. Some plugin uploaders require manifest files at the archive root and may reject a GitHub-generated ZIP. Also, ChatGPT Web may treat plugins declaring MCP in `mcp.json` / `.mcp.json` as *Desktop only*. **Direct source-ZIP installation in both clients is not yet verified.** If either installer rejects the ZIP, do not claim this distribution has passed; record the precise error for a structural fix. We won't ask students to generate another archive.
+**Compatibility notice:** GitHub puts all source files under an outer `professorX-main/` folder. Some plugin uploaders require manifest files at the archive root and may reject a GitHub-generated ZIP. **Direct source-ZIP installation in both clients is not yet verified.** If either installer rejects the ZIP, do not claim this distribution has passed; record the precise error for a structural fix. We won't ask students to generate another archive.
 
 This ZIP does not authorize Google Drive or guarantee MCP connections are enabled automatically.
 
@@ -132,8 +132,7 @@ local Python MCP, or owner-only credentials.
 |---|---|
 | Skill installed, but no `get_teaching_plan` tool | Connect **either** remote or local MCP in Step 2 and enable the connector. |
 | Remote MCP unavailable | Verify the exact HTTPS URL ends with `/mcp`, and check client connection status; ask the instructor if the service is down. |
-| Local MCP unavailable | Check the `/exec` gateway URL, Python environment and stdio configuration. |
-| Claude Web connector works but ProfessorX style is absent | The MCP connector does not install `SKILL.md`; provide the public skill text using your available project/chat instruction feature. |
+| Local MCP unavailable | Contact the instructor for owner-side configuration and verify the Python environment. |
 | Drive folder opens in browser but AI cannot read it | Configure an authorized Drive connection in your AI client or attach the actual course file. |
 | Assistant cannot find supporting course material | It must say so; never invent citations, page numbers or source contents. |
 | Client cannot use HTTP MCP | Use Option B if the client supports local stdio MCP; otherwise use a supported client. |

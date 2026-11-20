@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
-  "name": "professor-x",
-  "version": "0.6.2-beta.1",
-  "description": "Public ProfessorX skill with limited teaching-plan MCP; student reference Drive separate",
+  "name": "professorx",
+  "version": "2.0.0",
+  "description": "ProfessorX cross-client study plugin for ESD, PAD, SES and RTES with remote teaching MCP.",
   "author": {
     "name": "Chandra Sekar"
   },
@@ -17,10 +17,13 @@
         "capabilities": [
           "Interactive"
         ],
-        "defaultPrompt": "Help me study my BITS Semester 1 material.",
+        "defaultPrompt": [
+          "ProfessorX setup: check authorized Google Drive references and the teaching-plan MCP."
+        ],
         "logo": "./assets/professor-x-icon-v024.jpg",
         "composerIcon": "./assets/professor-x-icon-v024.jpg"
-      }
+      },
+      "onboardingSkill": "./skills/professorx/SKILL.md"
     }
   }
 }

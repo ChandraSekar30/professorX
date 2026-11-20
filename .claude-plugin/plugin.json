@@ -1,8 +1,9 @@
 {
-  "name": "professor-x",
-  "version": "0.6.2-beta.1",
+  "name": "professorx",
+  "version": "2.0.0",
   "description": "Public ProfessorX student study skill for ESD/PAD/SES/RTES",
   "author": {
     "name": "ProfessorX"
-  }
+  },
+  "mcpServers": "./.claude-plugin/mcp/.mcp.json"
 }

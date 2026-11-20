@@ -80,7 +80,7 @@ def test_only_google_content_redirect_allowed(monkeypatch):
 def test_public_skill_copies_are_identical_and_private_catalog_absent():
     from pathlib import Path
     root=Path(__file__).resolve().parents[1]
-    copies=[root/'SKILL.md',root/'skills/professorx/SKILL.md',root/'plugins/professorX/skills/professorx-study/SKILL.md']
+    copies=[root/'SKILL.md',root/'skills/professorx/SKILL.md']
     assert len({p.read_text(encoding='utf-8') for p in copies})==1
     assert not (root/'references/source-catalog.json').exists()
     assert 'LectureNotes_RTA.pdf' not in copies[0].read_text(encoding='utf-8')
